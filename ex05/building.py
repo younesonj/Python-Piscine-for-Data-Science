@@ -1,7 +1,9 @@
 import sys as s
 
+
 def count_characters(text):
-    """Count uppercase, lowercase, punctuation, spaces, and digits in a string."""
+    """Count uppercase, lowercase, punctuation,
+         spaces, and digits in a string."""
     upper = 0
     lower = 0
     pun = 0
@@ -25,20 +27,25 @@ def count_characters(text):
     print(f"{spaces} spaces")
     print(f"{digits} digits")
 
+
 def main():
-    """Entry point: get text from args or prompt, validate, and display counts."""
+    """Entry point: get text from args or prompt,
+     validate, and display counts."""
     args = s.argv[1:]
     try:
         assert len(args) <= 1, "more than one argument is provided"
         if (len(args) == 1):
             text = args[0]
         else:
-            text = input("What is the text to count? " + "\n")
+            text = input("What is the text to count?\n") + "\n"
     except AssertionError as e:
         print(f"AssertionError: {e}")
+    except EOFError:
+        print()
     else:
         print(f"The text contains {len(text)} characters:")
         count_characters(text)
+
 
 if __name__ == "__main__":
     main()
